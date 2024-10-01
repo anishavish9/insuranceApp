@@ -1,0 +1,102 @@
+<div style="background-image: url('https://www.policybazaar.com/pblife/assets/images/pb_life_1650972184.jpg') !important" *ngIf="isLoggedIn() else notLoggedIn">
+<div class="container mt-5">
+    <h4 class="text-primary text-center mb-4"><b>Payment Details</b></h4>
+
+    <!-- Vehicle and Policy Summary -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Vehicle Details</h5>
+        <p><strong>Registration Number:</strong> {{ vehicleRegNumber }}</p>
+        <p><strong>Year of Purchase:</strong> {{ yearOfPurchase }}</p>
+        <p><strong>Company Name:</strong> {{ companyName }}</p>
+        <p><strong>Model Name:</strong> {{ modelName }}</p>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Selected Policy</h5>
+        <p><strong>Company Name:</strong> {{ selectedPolicy?.companyName }}</p>
+        <p><strong>Amount of Insurance:</strong> {{ selectedPolicy?.amount }}</p>
+        <p><strong>IDV Value:</strong> {{ selectedPolicy?.idvValue }}</p>
+      </div>
+    </div>
+
+    <!-- Payment Method Selection -->
+    <div class="card p-4 shadow-lg mb-4">
+      <h5 class="card-title mb-4">Choose Payment Method</h5>
+      <form (ngSubmit)="onPaymentSubmit()">
+        <div class="form-group mb-3">
+          <label for="paymentMethod" class="form-label">Select Payment Method</label>
+          <select class="form-control" id="paymentMethod" [(ngModel)]="paymentMethod" name="paymentMethod" required>
+            <option value="" disabled>Select your option</option>
+            <option value="debit">Debit Card</option>
+            <option value="credit">Credit Card</option>
+            <option value="upi">UPI</option>
+            <option value="netbanking">Net Banking</option>
+          </select>
+        </div>
+
+        <!-- Payment Details Based on Selection -->
+        <div *ngIf="paymentMethod === 'debit'" class="form-group mb-4">
+          <label for="debitCardNumber" class="form-label">Debit Card Number</label>
+          <input type="text" class="form-control" id="debitCardNumber" placeholder="Enter Debit Card Number" required>
+        </div>
+
+        <div *ngIf="paymentMethod === 'credit'" class="form-group mb-4">
+          <label for="creditCardNumber" class="form-label">Credit Card Number</label>
+          <input type="text" class="form-control" id="creditCardNumber" placeholder="Enter Credit Card Number" required>
+        </div>
+
+        <div *ngIf="paymentMethod === 'upi'" class="form-group mb-4">
+          <label for="upiId" class="form-label">UPI ID</label>
+          <input type="text" class="form-control" id="upiId" placeholder="Enter UPI ID" required>
+        </div>
+
+        <div *ngIf="paymentMethod === 'netbanking'" class="form-group mb-4">
+          <label for="netBankingId" class="form-label">Net Banking ID</label>
+          <input type="text" class="form-control" id="netBankingId" placeholder="Enter Net Banking ID" required>
+        </div>
+
+        <!-- Display Payment Amount -->
+        <div class="mb-4">
+          <h5 class="text-primary">Payable Amount: {{ selectedPolicy?.amount }}</h5>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Pay Now</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="paymentSuccessModal" tabindex="-1" aria-labelledby="paymentSuccessModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentSuccessModalLabel">Payment Successful</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Congratulations! Your payment is done.</p>
+          <p>Details have been sent to your email. Thank you!</p>
+        </div>
+        <div class="modal-footer">
+          <a [routerLink]="['/home']" class="btn btn-primary">Go to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notLoggedIn>
+  <div class="d-flex flex-column align-items-center vh-100 background-container p-4">
+    <div class="text-center p-5 shadow-lg-rounded" style="background-color: #f8f9fa">
+      <h1 class="display-4 text-primary"> Welcome, Guest</h1>
+      <p class="lead">Please log in to access secure content.</p>
+      <button (click) = "NavigateToLoginPage()" class="btn btn-primary btn-lg mt-3">Login</button>
+    </div>
+  </div>
+</ng-template>
+
+
+

@@ -1,0 +1,138 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* Light background color for the entire page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the body takes full viewport height */
+}
+
+/* Background color for the container */
+.container {
+  background-color: lightgreen; /* Set light green background */
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 1200px; /* Limit the width of the container */
+  width: 100%; /* Ensure the container takes up full width up to max-width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+}
+
+/* Ensure the card styling is retained */
+.card {
+  border-radius: 15px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+}
+
+/* Button and form styles */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+/* Modal styling */
+.modal-content {
+  border-radius: 8px;
+}
+
+.modal-header {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.modal-body {
+  font-size: 1rem;
+  color: #333;
+}
+
+.modal-footer {
+  border-top: 1px solid #e9ecef;
+}
+
+.modal-footer .btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .form-control {
+    font-size: 0.875rem;
+  }
+
+  .btn-primary {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+}
+
+
+.shadow-lg{
+  box-shadow: 0 1rem 3rem rgba(0,0,0,0.175) !important;
+}
+
+.text-primary{
+  color: #007bff !important;
+}
+
+.display-4{
+  font-size:2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.lead{
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.lead{
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.background-container{
+  background-image:  url('https://www.policybazaar.com/pblife/assets/images/pb_life_1650972184.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}

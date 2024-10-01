@@ -1,0 +1,55 @@
+<div *ngIf="isLoggedIn() else notLoggedIn" class="d-flex flex-column align-items-center vh-100 p-4">
+  <!-- Vehicle Details Form -->
+  <h2 class="text-primary mb-4"><b>Welcome to Vehicle Insurance </b></h2>
+  <div class="card p-4 shadow-lg mb-4" style="width: 100%; max-width: 800px;">
+    <h3 class="text-primary text-center mb-4"><b>Enter Vehicle Details</b></h3>
+    <form (ngSubmit)="onSubmit()">
+      <div class="d-flex flex-wrap justify-content-between">
+        <div class="form-group mb-3" style="flex: 1; margin-right: 10px;">
+          <label for="vehicleRegNumber" class="form-label"><b>Vehicle Reg Number</b></label>
+          <input type="text" class="form-control" id="vehicleRegNumber" [(ngModel)]="vehicleRegNumber" name="vehicleRegNumber" placeholder="Enter registration number" required>
+        </div>
+        <div class="form-group mb-3" style="flex: 1; margin-right: 10px;">
+          <label for="yearOfPurchase" class="form-label"><b>Year of Purchase</b></label>
+          <input type="number" class="form-control" id="yearOfPurchase" [(ngModel)]="yearOfPurchase" name="yearOfPurchase" placeholder="Enter year of purchase" required>
+        </div>
+        <div class="form-group mb-3" style="flex: 1; margin-right: 10px;">
+          <label for="companyName" class="form-label"><b>Company Name</b></label>
+          <input type="text" class="form-control" id="companyName" [(ngModel)]="companyName" name="companyName" placeholder="Enter company name" required>
+        </div>
+        <div class="form-group mb-4" style="flex: 1;">
+          <label for="modelName" class="form-label"><b>Model Name</b></label>
+          <input type="text" class="form-control" id="modelName" [(ngModel)]="modelName" name="modelName" placeholder="Enter model name" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+  </div>
+
+  <!-- Policies Section -->
+  <div *ngIf="showPolicies" class="w-100" style="max-width: 800px;">
+    <h3 class="text-primary text-center mb-4"><b>Available Insurance Policies</b></h3>
+    <div class="list-group">
+      <div *ngFor="let policy of policies" class="list-group-item mb-3">
+        <div class="d-flex flex-column">
+          <div class="d-flex align-items-center mb-2">
+            <h5 class="mb-0">{{ policy.companyName }}</h5>
+          </div>
+          <p class="mb-1"><strong>Amount of Insurance:</strong> ₹{{ policy.amount }}</p>
+          <p class="mb-1"><strong>IDV Value:</strong> ₹{{ policy.idvValue }}</p>
+          <button (click)="purchasePolicy(policy)" class="btn btn-primary">Purchase</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notLoggedIn>
+  <div class="d-flex flex-column align-items-center vh-100">
+    <div class="text-center p-5 shadow-lg-rounded" style="background-color: #f8f9fa">
+      <h1 class="display-4 text-primary"> Welcome, Guest</h1>
+      <p class="lead">Please log in to access secure content.</p>
+      <button (click)="NavigateToLoginPage()" class="btn btn-primary btn-lg mt-3">Login</button>
+    </div>
+  </div>
+</ng-template>
